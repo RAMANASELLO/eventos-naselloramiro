@@ -13,7 +13,7 @@ export const ItemDetailContainer = () => {
 
       setTimeout(() => {
         resolve(data);
-      }, 2000);
+      },);
     });
   };
 
@@ -25,7 +25,7 @@ export const ItemDetailContainer = () => {
 
   return (
     <div>
-      <ItemDetail producto={items} productId={productId} />
+      <ItemDetail productos={items} productId={productId} />
     </div>
   );
 };

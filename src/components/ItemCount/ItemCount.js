@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 
-const Counter = ({onAdd, stock, initial}) => {
+const Counter = ({stock, initial, onAdd}) => {
 const [contador,setContador]=useState(initial)
     const suma=() => {
         

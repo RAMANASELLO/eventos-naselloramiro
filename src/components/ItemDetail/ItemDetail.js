@@ -1,31 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect } from 'react';
 import ItemCount from '../ItemCount/ItemCount'
+import { CartContext } from "../CartContext/CartContext";
+import { useState, useContext } from "react";
 
-const ItemDetail = ({ producto, productId }) => {
-  const [obj, setObj] = useState(null);
+
+const ItemDetail = ({ productos, productId }) => {
+  const {addItem}=useContext(CartContext)
+  const [producto, setProducto] = useState(null);
+
 
   const onAdd=(contador) =>{
     console.log(`Recibo ${contador}`)
-  }
+    console.log("producto", producto)
+    addItem(producto, productId, contador)
+  } 
 
 
   useEffect(() => {
     let prod;
-    if (producto) {
-      prod = producto?.filter((item) => item.id === Number(productId));
-      setObj(prod[0]);
+    if (productos) {
+      prod = productos?.filter((item) => item.id === Number(productId));
+      setProducto(prod[0]);
     }
-  }, [producto]);
+  }, [productos]);
 
   return (
 
     <div>
       <p>
-        <img src={obj?.image} alt="" />
-        <h1>{obj?.name}</h1>
-        <p>{obj?.description}</p>
-        <p>{obj?.price}</p>
-       </p>
+        <img src={producto?.image} alt="" />
+        <h1>{producto?.name}</h1>
+        <p>{producto?.description}</p>
+        <p>{producto?.price}</p>
+      </p>
 
        <p>
         <ItemCount initial={1} stock={10} onAdd={onAdd}/>

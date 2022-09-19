@@ -40,7 +40,9 @@ const NavBar = () => {
         </div>
 
         <div>
-            <h3><BiCart/></h3>
+            <Link to='/cart'>
+                <h3><BiCart/></h3>
+            </Link>
         </div>
 
     </div>
